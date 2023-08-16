@@ -18,7 +18,7 @@ const Footer = () => {
                             {
                                 redesSociales.map(redSocial => (
 
-                                    <Link key={redSocial.id}>
+                                    <Link key={redSocial.id} to={redSocial.link} target='_blank'>
                                         {redSocial.icono}
                                     </Link>
                                 ))

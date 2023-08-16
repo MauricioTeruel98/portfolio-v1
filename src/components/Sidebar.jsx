@@ -1,6 +1,7 @@
 import React from 'react'
 import NavBar from './NavBar'
 import menuItems from '../data/menuItems'
+import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
 
@@ -12,9 +13,9 @@ const Sidebar = () => {
                     {
                         menuItems.map(item => (
                             <li className="tooltip tooltip-right tooltip-accent my-3 hover:scale-110 transition duration-200 ease-in-out z-50" data-tip={item.nombre} key={item.id}>
-                                <a className='flex justify-center'>
+                                <Link className='flex justify-center' to={item.link}>
                                     {item.icono}
-                                </a>
+                                </Link>
                             </li>
                         ))
                     }

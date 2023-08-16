@@ -9,7 +9,7 @@ const menuItems = [
         id: uuid(),
         nombre: "Inicio",
         icono: <BiHome />,
-        link: ""
+        link: "/"
     },
     {
         id: uuid(),

@@ -6,19 +6,19 @@ const redesSociales = [
         id: uuid(),
         nombre: "github",
         icono: <BiLogoGithub />,
-        link: ""
+        link: "https://github.com/MauricioTeruel98"
     },
     {
         id: uuid(),
         nombre: "instagram",
         icono: <BiLogoInstagram />,
-        link: ""
+        link: "https://www.instagram.com/mauricioteruel1/?theme=dark"
     },
     {
         id: uuid(),
         nombre: "linkedin",
         icono: <BiLogoLinkedinSquare />,
-        link: ""
+        link: "https://www.linkedin.com/in/mauricio-teruel/"
     },
     {
         id: uuid(),

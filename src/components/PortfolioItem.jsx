@@ -36,7 +36,7 @@ const PortfolioItem = ({ proyecto }) => {
         {
             id:3,
             nombre: "Más Información",
-            imagen: proyecto.imagen,
+            imagen: proyecto?.imagen[0],
             link: `/portfolio/${proyectoId}`
         }
     ]
@@ -46,7 +46,7 @@ const PortfolioItem = ({ proyecto }) => {
         <>
             <a className={clasesParaAnimacion} onClick={openModal}>
                 <div className="card w-full h-80 bg-base-100 shadow-xl image-full">
-                    <figure><img className='w-full' src={proyecto.imagen} alt={proyecto.titulo} /></figure>
+                    <figure><img className='w-full' src={proyecto.imagen[0]} alt={proyecto.titulo} /></figure>
                     <div className="card-body justify-end">
                         <h2 className="card-title">{proyecto.titulo}</h2>
                         <h3>{proyecto.bajada}</h3>
@@ -66,7 +66,7 @@ const PortfolioItem = ({ proyecto }) => {
                                     <Link 
                                         to={boton.link} 
                                         className="btn btn-info z-30"
-                                        target={(proyecto.github === '' || proyecto.link === '') ? "_blank" : ""}
+                                        // target={(proyecto.github === '' || proyecto.link === '') ? "_blank" : ""}
                                     >{boton.nombre}</Link>
                                 </div>
                             ))

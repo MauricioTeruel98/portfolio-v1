@@ -16,7 +16,7 @@ const RedesSocialesInicio = () => {
                     <div className='flex flex-wrap justify-center md:grid xl:grid-cols-2 gap-5'>
                         {
                             redesSociales.map(redSocial => (
-                                <Link to={redSocial.link} key={redSocial.id}>
+                                <Link to={redSocial.link} key={redSocial.id} target='_blank'>
                                     <div className={`rounded-3xl w-40 h-40 glassie ${clasesParaAnimacion} hover:bg-indigo-800`}>
                                         <div className='relative'>
                                             <EnterLink />
