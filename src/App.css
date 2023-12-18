@@ -21,3 +21,15 @@ body{
     text-align: center;
     display: none;
 }
+
+.artboard.phone-1 {
+    width: 100%;
+    height: 568px;
+}
+
+/* @media screen and (max-width: 540px) {
+    .mockup-browser{
+        max-width: 300px;
+        margin: auto;
+    }
+} */
