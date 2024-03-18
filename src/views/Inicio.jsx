@@ -6,6 +6,7 @@ import Skills from '../components/Skills'
 import HomeBlog from '../components/HomeBlog'
 import Contacto from '../components/Contacto'
 import Footer from '../components/Footer'
+import SeccionExp from '../components/SeccionExp'
 
 const Inicio = () => {
 
@@ -21,6 +22,10 @@ const Inicio = () => {
 
                     <section>
                         <Skills />
+                    </section>
+
+                    <section>
+                        <SeccionExp />
                     </section>
 
                     <section>

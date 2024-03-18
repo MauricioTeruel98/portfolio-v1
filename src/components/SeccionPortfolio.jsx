@@ -23,11 +23,11 @@ const SeccionPortfolio = () => {
                 }
             </div>
 
-            <div className='w-full flex justify-center mt-10'>
+            {/* <div className='w-full flex justify-center mt-10'>
                 <Link to={'/'} className="btn btn-secondary rounded-full">
                     Ver Todos
                 </Link>
-            </div>
+            </div> */}
         </>
     )
 }
