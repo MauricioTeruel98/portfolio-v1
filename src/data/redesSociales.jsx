@@ -20,12 +20,12 @@ const redesSociales = [
         icono: <BiLogoLinkedinSquare />,
         link: "https://www.linkedin.com/in/mauricio-teruel/"
     },
-    {
-        id: uuid(),
-        nombre: "email",
-        icono: <BiSolidEnvelope />,
-        link: ""
-    }
+    // {
+    //     id: uuid(),
+    //     nombre: "email",
+    //     icono: <BiSolidEnvelope />,
+    //     link: ""
+    // }
 ]
 
 export default redesSociales

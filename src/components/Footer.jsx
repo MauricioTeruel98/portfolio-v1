@@ -1,9 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import redesSociales from '../data/redesSociales'
 import { IconContext } from 'react-icons'
+import { BiSolidEnvelope } from 'react-icons/bi'
 
 const Footer = () => {
+
+    const [showAlert, setShowAlert] = useState(false);
+
+    const copyToClipboard = () => {
+        const textArea = document.createElement('textarea');
+        textArea.value = "mauricioteruel98@gmail.com"
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        setShowAlert(true); // Activar la alerta
+    };
+
+    useEffect(() => {
+        // Ocultar la alerta después de 3 segundos
+        setTimeout(() => {
+            setShowAlert(false);
+        }, 5000);
+    }, [showAlert]);
+
     return (
         <>
             <footer className="footer p-10 text-neutral-content mt-20 bg-transparent">
@@ -23,10 +44,28 @@ const Footer = () => {
                                     </Link>
                                 ))
                             }
+                            <button onClick={copyToClipboard}>
+                                <BiSolidEnvelope />
+                            </button>
                         </IconContext.Provider>
                     </div>
                 </div>
             </footer>
+
+            {showAlert && (
+                <div className="fixed top-20 right-5 lg:right-10 transition" style={{ zIndex: '9999' }}>
+                    <div role="alert" className="alert alert-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"><path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span>Email copiado en portapapeles</span>
+                    </div>
+                </div>
+            )}
         </>
     )
 }
