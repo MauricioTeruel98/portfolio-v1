@@ -1,6 +1,6 @@
 import React from 'react'
 import { FiDownload } from 'react-icons/fi'
-import resume from '../assets/pdf/cv_Mauricio_Gabriel_Teruel.pdf'
+import resume from '../assets/pdf/cv_Mauricio_Gabriel_Teruel.pdf'  //Cambiar la ruta cada vez que se cambie el CV
 
 const BotonFlotante = () => {
     return (

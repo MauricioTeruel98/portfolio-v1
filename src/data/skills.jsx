@@ -45,11 +45,11 @@ const skills = [
         nombre: "",
         icono: <FaBootstrap />
     },
-    // {
-    //     id: uuid(),
-    //     nombre: "",
-    //     icono: <TbBrandNextjs />
-    // },
+    {
+        id: uuid(),
+        nombre: "",
+        icono: <TbBrandNextjs />
+    },
 
 ]
 
