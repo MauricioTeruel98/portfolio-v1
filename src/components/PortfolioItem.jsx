@@ -44,7 +44,7 @@ const PortfolioItem = ({ proyecto }) => {
     return (
 
         <>
-            <a className={`mx-auto ${clasesParaAnimacion} w-full`} href={`/portfolio/${proyecto.id}`} >
+            <Link className={`mx-auto ${clasesParaAnimacion} w-full`} to={`/portfolio/${proyecto.id}`} >
                 <div className="mockup-browser relative border border-black bg-base-300 hidden md:block">
                     <div className="mockup-browser-toolbar">
                         <div className="input">{proyecto.link}</div>
@@ -74,7 +74,7 @@ const PortfolioItem = ({ proyecto }) => {
                         </div>
                     </div>
                 </div>
-            </a>
+            </Link>
 
             <dialog id={modalId} className="modal modal-middle sm:modal-middle">
                 <form method="dialog" className="modal-box glassie p-0" style={{ maxWidth: "60rem" }}>
