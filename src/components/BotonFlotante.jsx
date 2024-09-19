@@ -1,11 +1,12 @@
 import React from 'react'
 import { FiDownload } from 'react-icons/fi'
+import resume from '../assets/pdf/cv_Mauricio_Gabriel_Teruel.pdf'
 
 const BotonFlotante = () => {
     return (
         <>
             <a
-                href={`../assets/pdf/${import.meta.env.VITE_NOMBRE_CURRICULUM_PARA_DESCARGA}.pdf`}
+                href={resume}
                 download={import.meta.env.VITE_NOMBRE_CURRICULUM_PARA_DESCARGA}
                 className="btn btn-lg btn-secondary absolute bottom-5 right-5 lg:bottom-10 lg:right-20 rounded-full z-50">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
