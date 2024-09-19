@@ -3,6 +3,7 @@ import Footer from '../components/Footer';
 import { Link, useParams } from 'react-router-dom';
 import proyectosPortfolio from '../data/proyectos';
 import { BiLogoReact, BiLogoJavascript } from 'react-icons/bi'
+import { RiSupabaseFill } from "react-icons/ri";
 import { FaLaravel, FaNodeJs, FaBootstrap } from 'react-icons/fa'
 import { SiMysql, SiMongodb, SiTailwindcss } from 'react-icons/si'
 import { TbBrandNextjs } from 'react-icons/tb'
@@ -27,6 +28,7 @@ const DetalleProyecto = () => {
         mysql: <SiMysql />,
         nextjs: <TbBrandNextjs />,
         javascript: <BiLogoJavascript />,
+        supabase: <RiSupabaseFill />
     };
 
     return (
