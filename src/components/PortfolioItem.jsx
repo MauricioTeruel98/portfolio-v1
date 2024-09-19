@@ -44,7 +44,7 @@ const PortfolioItem = ({ proyecto }) => {
     return (
 
         <>
-            <a className={`mx-auto ${clasesParaAnimacion} w-full`} onClick={openModal}>
+            <a className={`mx-auto ${clasesParaAnimacion} w-full`} href={`/portfolio/${proyecto.id}`} >
                 <div className="mockup-browser relative border border-black bg-base-300 hidden md:block">
                     <div className="mockup-browser-toolbar">
                         <div className="input">{proyecto.link}</div>

@@ -17,7 +17,7 @@ const proyectosPortfolio = [
             'https://res.cloudinary.com/dhygcahmm/image/upload/v1726763685/projects/w2yrd7pqkqnqculhy2g9.png',
             'https://res.cloudinary.com/dhygcahmm/image/upload/v1726763685/projects/a0jshgrx9liwgdpsg1s8.png'
         ],
-        github: ""
+        github: "https://github.com/MauricioTeruel98/my-admin-dashboard"
     },
     {
         id: 2,
@@ -31,7 +31,7 @@ const proyectosPortfolio = [
             'https://res.cloudinary.com/dhygcahmm/image/upload/v1726764832/projects/apb4ih1oz01jiyp8n1hg.png',
             'https://res.cloudinary.com/dhygcahmm/image/upload/v1726764835/projects/iqtkyd1nfkahyolihgif.png'
         ],
-        github: ""
+        github: "https://github.com/MauricioTeruel98/app-pedidos"
     },
     {
         id: 3,

@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import { Link, useParams } from 'react-router-dom';
 import proyectosPortfolio from '../data/proyectos';
-import { BiLogoReact, BiLogoJavascript } from 'react-icons/bi'
+import { BiLogoReact, BiLogoJavascript, BiLogoGithub } from 'react-icons/bi'
 import { RiSupabaseFill } from "react-icons/ri";
 import { FaLaravel, FaNodeJs, FaBootstrap } from 'react-icons/fa'
 import { SiMysql, SiMongodb, SiTailwindcss } from 'react-icons/si'
 import { TbBrandNextjs } from 'react-icons/tb'
+import { TbWorld } from "react-icons/tb";
+import PortfolioItem from '../components/PortfolioItem';
 
 const DetalleProyecto = () => {
 
@@ -34,6 +36,14 @@ const DetalleProyecto = () => {
     return (
         <>
             <div className='w-full mx-auto mt-20'>
+                <div className="w-11/12 mx-auto mb-5">
+                    <div className="breadcrumbs text-sm">
+                        <ul>
+                            <li><a href='/'>Inicio</a></li>
+                            <li>Portfolio</li>
+                        </ul>
+                    </div>
+                </div>
                 <div className='w-11/12 mx-auto lg:flex gap-5'>
                     <div className='w-full lg:w-1/2 rounded-2xl'>
                         <div className="carousel w-full rounded-xl md:rounded-3xl">
@@ -54,7 +64,23 @@ const DetalleProyecto = () => {
                         </div>
                     </div>
                     <div className='w-full lg:w-1/2 rounded-2xl p-5'>
-                        <h1 className='text-6xl md:text-8xl font-semibold'>{proyecto.titulo}</h1>
+                        <div className="flex mb-5">
+                            {
+                                proyecto.github && (
+                                    <Link to={proyecto.github}>
+                                        <BiLogoGithub />
+                                    </Link>
+                                )
+                            }
+                            {
+                                proyecto.link && (
+                                    <Link to={proyecto.link}>
+                                        <TbWorld />
+                                    </Link>
+                                )
+                            }
+                        </div>
+                        <h1 className='text-4xl md:text-8xl font-semibold'>{proyecto.titulo}</h1>
                         <Link to={proyecto.link} target='_blank' className='text-lg underline text-accent'>{proyecto.link}</Link>
                         <div className="divider"></div>
                         <h2 className='text-xl'>{proyecto.bajada}</h2>
@@ -78,6 +104,11 @@ const DetalleProyecto = () => {
                 </div>
                 <div className='w-11/12 mx-auto'>
                     <div className="divider"></div>
+                    {/* {
+                        proyectosPortfolio.map(item => (
+                            <PortfolioItem proyecto={item} key={item.id} />
+                        ))
+                    } */}
                 </div>
                 <Footer />
             </div>
