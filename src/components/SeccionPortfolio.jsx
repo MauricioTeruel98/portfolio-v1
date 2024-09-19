@@ -17,7 +17,7 @@ const SeccionPortfolio = () => {
 
             <div className='grid lg:grid-cols-2 2xl:grid-cols-3 gap-5 mt-20'>
                 {
-                    proyectosPortfolio.slice(0, 6).map(proyecto => (
+                    proyectosPortfolio.slice(0, 7).map(proyecto => (
                         <PortfolioItem proyecto={proyecto} key={proyecto.id} />
                     ))
                 }

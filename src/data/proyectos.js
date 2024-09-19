@@ -27,8 +27,9 @@ const proyectosPortfolio = [
         link: '',
         tecnologias: [{ react: true }, { node: true }, { mongo: false }, { tailwind: true }, { bootstrap: false }, { laravel: false }, { mysql: false }, { nextjs: false }, { javascript: false }, { supabase: true }],
         imagen: [
-            'https://res.cloudinary.com/dhygcahmm/image/upload/v1709168479/projects/r71z0cmtrvo7atic0eb5.png',
-            'https://res.cloudinary.com/dhygcahmm/image/upload/c_crop,g_auto,h_400,w_800/projects/akqsfqcrumdtq7chn0tx.jpg'
+            'https://res.cloudinary.com/dhygcahmm/image/upload/v1726764833/projects/fbbbkhapapu8rrh3zinh.png',
+            'https://res.cloudinary.com/dhygcahmm/image/upload/v1726764832/projects/apb4ih1oz01jiyp8n1hg.png',
+            'https://res.cloudinary.com/dhygcahmm/image/upload/v1726764835/projects/iqtkyd1nfkahyolihgif.png'
         ],
         github: ""
     },
