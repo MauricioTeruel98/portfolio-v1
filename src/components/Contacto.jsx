@@ -50,11 +50,11 @@ const Contacto = () => {
                 </div>
             </div>
 
-            <div className='flex justify-center items-center w-full'>
+            <div className='lg:flex justify-center items-center w-full'>
                 <div className="card lg:w-1/2 glassie shadow-xl mt-20">
                     <div className="card-body">
                         <h2 className="card-title">Enviame un mensaje</h2>
-                        <form onSubmit={handleSubmit(onSubmit)} className='contact-form w-44 sm:w-full mx-auto'>
+                        <form onSubmit={handleSubmit(onSubmit)} className='contact-form w-full mx-auto'>
                             <div className="flex flex-col md:flex-row gap-5">
                                 <div className="form-control w-full md:w-1/2 my-0 sm:my-2">
                                     <label className="label">
