@@ -12,8 +12,6 @@ import PortfolioItem from '../components/PortfolioItem';
 
 const DetalleProyecto = () => {
 
-    
-
     const [proyecto, setProyecto] = useState({});
     const { id } = useParams();
 
