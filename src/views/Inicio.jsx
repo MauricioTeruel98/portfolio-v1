@@ -15,28 +15,28 @@ const Inicio = () => {
             <div className='w-full mx-auto mt-20'>
 
                 <div className='w-11/12 mx-auto'>
-                    <section className='md:flex items-center gap-10 justify-center'>
+                    <section id="inicio" className='md:flex items-center gap-10 justify-center'>
                         <PersonalInfo />
                         <RedesSocialesInicio />
                     </section>
 
-                    <section>
+                    <section id="skills" className='scroll-mt-20'>
                         <Skills />
                     </section>
 
-                    <section>
+                    <section id="experiencia" className='scroll-mt-20'>
                         <SeccionExp />
                     </section>
 
-                    <section>
+                    <section id="portfolio" className='scroll-mt-20'>
                         <SeccionPortfolio />
                     </section>
 
-                    <section>
+                    <section id="blog" className='scroll-mt-20'>
                         <HomeBlog />
                     </section>
 
-                    <section>
+                    <section id="contacto" className='scroll-mt-20'>
                         <Contacto />
                     </section>
                 </div>

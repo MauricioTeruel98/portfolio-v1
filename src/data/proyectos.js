@@ -3,8 +3,27 @@ import uuid from 'react-uuid';
 const proyectosPortfolio = [
     {
         id: 1,
+        titulo: 'Urbani.info | Propiedades en alquiler y venta',
+        bajada: 'Sitio web para alquiler y venta de propiedades',
+        contenido: 'Propietarios y agentes inmobiliarios pueden publicar sus propiedades en el sitio web y gestionarlas desde el panel de control, y llegar más facilmente a posibles clientes. Contiene un mapa interactivo para visualizar las propiedades.',
+        link: 'https://urbani.info',
+        tecnologias: [{ react: true }, { node: true }, { mongo: false }, { tailwind: true }, { bootstrap: false }, { laravel: true }, { mysql: true }, { nextjs: false }, { javascript: false }, { supabase: false }],
+        imagen: [
+            'https://res.cloudinary.com/dhygcahmm/image/upload/v1755813664/projects/urbani/Captura_de_pantalla_2025-08-21_184208_gawirk.png',
+            'https://res.cloudinary.com/dhygcahmm/image/upload/v1755813639/projects/urbani/979shots_so_hn7qr5.png',
+            'https://res.cloudinary.com/dhygcahmm/image/upload/v1755813642/projects/urbani/439shots_so_romnxu.png',
+            'https://res.cloudinary.com/dhygcahmm/image/upload/v1755813644/projects/urbani/897shots_so_fm06am.png',
+            'https://res.cloudinary.com/dhygcahmm/image/upload/v1755813642/projects/urbani/337shots_so_tvp3l2.png',
+            'https://res.cloudinary.com/dhygcahmm/image/upload/v1755813641/projects/urbani/44shots_so_ecyfhf.png',
+            'https://res.cloudinary.com/dhygcahmm/image/upload/v1755813641/projects/urbani/205shots_so_lpa1ub.png',
+            'https://res.cloudinary.com/dhygcahmm/image/upload/v1755813637/projects/urbani/525shots_so_jxtol2.png'
+        ],
+        github: "https://github.com/MauricioTeruel98/market-props-v2"
+    },
+    {
+        id: 2,
         titulo: 'TANO, Tu Administrador de Negocio Online',
-        bajada: 'Setio web para administrar negocios',
+        bajada: 'Sitio web para administrar negocios',
         contenido: 'Contiene un modo de suscripción de pago para que otro dueños de kioscos o negocios puedan acceder a este administrador. Estado actual: Modo suscripción pendiente de activación',
         link: 'https://almacenema.netlify.app',
         tecnologias: [{ react: true }, { node: true }, { mongo: false }, { tailwind: true }, { bootstrap: false }, { laravel: false }, { mysql: false }, { nextjs: true }, { javascript: false }, { supabase: true }],
@@ -20,7 +39,7 @@ const proyectosPortfolio = [
         github: "https://github.com/MauricioTeruel98/my-admin-dashboard"
     },
     {
-        id: 2,
+        id: 3,
         titulo: 'App para administración de pedidos - React Native',
         bajada: 'Aplicación movil para administrar pedidos, realizar ventar y controlar los pedidos realizados para clientes. Utilizada por los repartidores de una panificación',
         contenido: '',
@@ -34,7 +53,7 @@ const proyectosPortfolio = [
         github: "https://github.com/MauricioTeruel98/app-pedidos"
     },
     {
-        id: 3,
+        id: 4,
         titulo: 'MkProps',
         bajada: 'Setio web de venta de propiedades',
         contenido: '',
@@ -47,7 +66,7 @@ const proyectosPortfolio = [
         github: ""
     },
     {
-        id: 4,
+        id: 5,
         titulo: 'Stellar Experience',
         bajada: 'Sitio web para proyecto de hackaton Nasa Space Apps Challenge',
         contenido: '',
@@ -61,7 +80,7 @@ const proyectosPortfolio = [
         github: "https://github.com/MauricioTeruel98/stellar-experience"
     },
     {
-        id: 5,
+        id: 6,
         titulo: 'OkFood',
         bajada: 'Proyecto final de curso Rolling Code School',
         contenido: '',
@@ -73,7 +92,7 @@ const proyectosPortfolio = [
         github: "https://github.com/ContiLuna/Proyecto_Final_be"
     },
     {
-        id: 6,
+        id: 7,
         titulo: 'Metro - En construcción',
         bajada: 'Sitio web para solicitar obras de carpinteria de aluminio y melamina',
         contenido: '',
@@ -87,7 +106,7 @@ const proyectosPortfolio = [
         github: ""
     },
     {
-        id: 7,
+        id: 8,
         titulo: 'Elevenflix',
         bajada: 'Sitio web del segundo proyecto del curso Rolling Code School',
         contenido: '',

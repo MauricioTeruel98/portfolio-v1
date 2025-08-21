@@ -9,31 +9,31 @@ const menuItems = [
         id: uuid(),
         nombre: "Inicio",
         icono: <BiHome />,
-        link: "/"
+        link: "/#inicio"
     },
     {
         id: uuid(),
         nombre: "Skills",
         icono: <FaTools />,
-        link: ""
+        link: "/#skills"
     },
     {
         id: uuid(),
         nombre: "Portfolio",
         icono: <PiBagSimpleDuotone />,
-        link: ""
+        link: "/#portfolio"
     },
     {
         id: uuid(),
         nombre: "Blog",
         icono: <TbNotes />,
-        link: ""
+        link: "/#blog"
     },
     {
         id: uuid(),
         nombre: "Contacto",
         icono: <BiSolidContact />,
-        link: ""
+        link: "/#contacto"
     },
 ]
 

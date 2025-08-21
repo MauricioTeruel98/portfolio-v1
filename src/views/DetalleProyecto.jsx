@@ -53,7 +53,7 @@ const DetalleProyecto = () => {
                                 proyecto.imagen && proyecto.imagen.map((img, index) => (
 
                                     <div id={`slide${index + 1}`} className="carousel-item relative w-full rounded-xl md:rounded-3xl" key={index}>
-                                        <img src={img} alt={proyecto.titulo} className='rounded-xl md:rounded-3xl' />
+                                        <img src={img} alt={proyecto.titulo} className='rounded-xl md:rounded-3xl object-cover' />
                                         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                                             <a href={`#slide${index}`} className="btn btn-circle">❮</a>
                                             {index < proyecto.imagen.length - 1 && (
