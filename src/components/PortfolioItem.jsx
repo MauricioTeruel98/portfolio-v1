@@ -1,102 +1,99 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import EnterLink from './elements/EnterLink';
-import usePortfolio from '../hooks/usePortfolio';
-import websiteImage from '../assets/img/website_image.jpg'
-import githubImage from '../assets/img/github-wallpaper-scaled.jpeg'
-import '../assets/css/portfolioItem.css'
+import { FiExternalLink, FiGithub, FiInfo } from 'react-icons/fi';
 
 const PortfolioItem = ({ proyecto }) => {
-
-    const { clasesParaAnimacion } = usePortfolio();
     const proyectoId = proyecto.id;
 
-    const modalId = `my_modal_${proyectoId}`;
-
-    const openModal = () => {
-        const modal = document.getElementById(modalId);
-        if (modal) {
-            modal.showModal();
-        }
+    // Función para obtener solo las tecnologías que están en true
+    const getActiveTechnologies = () => {
+        if (!proyecto.tecnologias) return [];
+        
+        return proyecto.tecnologias
+            .filter(tech => Object.values(tech)[0] === true)
+            .map(tech => Object.keys(tech)[0]);
     };
 
-    const botonesAcciones = [
-        {
-            id: 1,
-            nombre: "Ver en GitHub",
-            imagen: githubImage,
-            link: proyecto.github
-        },
-        {
-            id: 2,
-            nombre: "Ver sitio web",
-            imagen: websiteImage,
-            link: proyecto.link
-        },
-        {
-            id: 3,
-            nombre: "Más Información",
-            imagen: proyecto?.imagen[0],
-            link: `/portfolio/${proyectoId}`
-        }
-    ]
+    const activeTechnologies = getActiveTechnologies();
 
     return (
-
-        <>
-            <Link className={`mx-auto ${clasesParaAnimacion} w-full`} to={`/portfolio/${proyecto.id}`} >
-                <div className="mockup-browser relative border border-black bg-base-300 hidden md:block">
-                    <div className="mockup-browser-toolbar">
-                        <div className="input">{proyecto.link}</div>
-                    </div>
-                    <div className="flex justify-center bg-base-200">
-                        <div className="card w-full h-80 bg-base-100 shadow-xl image-full">
-                            <figure><img className='w-full' src={proyecto.imagen[0]} alt={proyecto.titulo} /></figure>
-                            <div className="card-body justify-end">
-                                <h2 className="card-title">{proyecto.titulo}</h2>
-                                <h3>{proyecto.bajada}</h3>
-                            </div>
-                        </div>
-                    </div>
+        <div className="group relative overflow-hidden rounded-2xl bg-dark-900/50 backdrop-blur-sm border border-dark-700/50 hover:border-accent-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-accent-500/25">
+            {/* Project Image */}
+            <div className="relative overflow-hidden aspect-video">
+                <img 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                    src={proyecto.imagen[0]} 
+                    alt={proyecto.titulo} 
+                />
+                
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-dark-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                {/* Action Buttons */}
+                <div className="absolute inset-0 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    {proyecto.github && (
+                        <a 
+                            href={proyecto.github} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="w-12 h-12 bg-dark-800/80 hover:bg-accent-600 rounded-full flex items-center justify-center text-white hover:text-white transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-dark-600/50"
+                        >
+                            <FiGithub className="w-5 h-5" />
+                        </a>
+                    )}
+                    
+                    {proyecto.link && (
+                        <a 
+                            href={proyecto.link} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="w-12 h-12 bg-dark-800/80 hover:bg-accent-600 rounded-full flex items-center justify-center text-white hover:text-white transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-dark-600/50"
+                        >
+                            <FiExternalLink className="w-5 h-5" />
+                        </a>
+                    )}
+                    
+                    <Link 
+                        to={`/portfolio/${proyectoId}`}
+                        className="w-12 h-12 bg-dark-800/80 hover:bg-accent-600 rounded-full flex items-center justify-center text-white hover:text-white transition-all duration-300 hover:scale-110 backdrop-blur-sm border border-dark-600/50"
+                    >
+                        <FiInfo className="w-5 h-5" />
+                    </Link>
                 </div>
+            </div>
 
-                <div className="mockup-phone md:hidden mx-auto border-amber-950">
-                    <div className="camera"></div>
-                    <div className="display">
-                        <div className="artboard artboard-demo phone-1">
-                        <div className="card w-full h-full bg-base-100 shadow-xl image-full">
-                            <figure><img className='w-full' src={proyecto.imagen[0]} alt={proyecto.titulo} /></figure>
-                            <div className="card-body justify-end">
-                                <h2 className="card-title">{proyecto.titulo}</h2>
-                                <h3>{proyecto.bajada}</h3>
-                            </div>
-                        </div>
-                        </div>
+            {/* Project Info */}
+            <div className="p-6">
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-accent-400 transition-colors duration-300">
+                    {proyecto.titulo}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                    {proyecto.bajada}
+                </p>
+                
+                {/* Technologies */}
+                {activeTechnologies.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                        {activeTechnologies.slice(0, 3).map((tech, index) => (
+                            <span 
+                                key={index}
+                                className="px-3 py-1 bg-dark-800/50 text-accent-400 text-xs rounded-full border border-dark-600/50"
+                            >
+                                {tech}
+                            </span>
+                        ))}
+                        {activeTechnologies.length > 3 && (
+                            <span className="px-3 py-1 bg-dark-800/50 text-gray-400 text-xs rounded-full border border-dark-600/50">
+                                +{activeTechnologies.length - 3}
+                            </span>
+                        )}
                     </div>
-                </div>
-            </Link>
+                )}
+            </div>
 
-            <dialog id={modalId} className="modal modal-middle sm:modal-middle">
-                <form method="dialog" className="modal-box glassie p-0" style={{ maxWidth: "60rem" }}>
-                    <button className="btn btn-sm btn-circle absolute right-2 top-2 z-30">✕</button>
-
-                    <div className='lg:flex overflow-hidden'>
-                        {
-                            botonesAcciones.map(boton => (
-                                <div className='w-80 lg:w-96 h-52 lg:h-96 flex justify-center items-center bg-cover bg-no-repeat bg-center modal-portfolio' style={{ backgroundImage: `url(${boton.imagen})` }} key={boton.id}>
-                                    <div className='overlay-modal-portfolio'></div>
-                                    <Link
-                                        to={boton.link}
-                                        className="btn btn-info z-30"
-                                    // target={(proyecto.github === '' || proyecto.link === '') ? "_blank" : ""}
-                                    >{boton.nombre}</Link>
-                                </div>
-                            ))
-                        }
-                    </div>
-                </form>
-            </dialog>
-        </>
+            {/* Hover Effect Border */}
+            <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-accent-500/30 transition-all duration-500 pointer-events-none"></div>
+        </div>
     );
 };
 

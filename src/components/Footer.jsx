@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import redesSociales from '../data/redesSociales'
-import { IconContext } from 'react-icons'
 import { BiSolidEnvelope } from 'react-icons/bi'
+import { useSmoothScroll } from '../hooks/usePortfolio'
 
 const Footer = () => {
-
     const [showAlert, setShowAlert] = useState(false);
 
     const copyToClipboard = () => {
@@ -15,54 +14,124 @@ const Footer = () => {
         textArea.select();
         document.execCommand('copy');
         document.body.removeChild(textArea);
-        setShowAlert(true); // Activar la alerta
+        setShowAlert(true);
     };
 
+    const { scrollToSection } = useSmoothScroll()
+
+    const handleNavigation = (sectionId) => {
+        scrollToSection(sectionId)
+    }
+
     useEffect(() => {
-        // Ocultar la alerta después de 3 segundos
         setTimeout(() => {
             setShowAlert(false);
-        }, 5000);
+        }, 3000);
     }, [showAlert]);
 
     return (
         <>
-            <footer className="footer p-10 text-neutral-content mt-20 bg-transparent">
-                <div>
-                    <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" className="fill-current"><path d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z"></path></svg>
-                    <p>Mauricio Teruel<br />&copy; {new Date().getFullYear()}</p>
-                </div>
-                <div>
-                    <span className="footer-title">Redes sociales y contacto</span>
-                    <div className="grid grid-flow-col gap-4">
-                        <IconContext.Provider value={{ style: { width: '2em', height: '2em' } }}>
-                            {
-                                redesSociales.map(redSocial => (
+            <footer className="border-t border-dark-700/50 bg-dark-900/30 backdrop-blur-sm">
+                <div className="max-w-7xl mx-auto px-6 py-12">
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {/* Brand */}
+                        <div className="space-y-4">
+                            <div className="flex items-center space-x-3">
+                                <div className="w-10 h-10 bg-gradient-to-br from-accent-500 to-accent-600 rounded-lg flex items-center justify-center">
+                                    <span className="text-white font-bold text-lg">MT</span>
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-bold text-white">Mauricio Teruel</h3>
+                                    <p className="text-gray-400 text-sm">Desarrollador Web Fullstack</p>
+                                </div>
+                            </div>
+                            <p className="text-gray-400 text-sm leading-relaxed">
+                                Creando experiencias digitales excepcionales con pasión y dedicación.
+                            </p>
+                        </div>
 
-                                    <Link key={redSocial.id} to={redSocial.link} target='_blank'>
+                        {/* Quick Links */}
+                        <div className="space-y-4">
+                            <h4 className="text-lg font-semibold text-white">Enlaces Rápidos</h4>
+                            <ul className="space-y-2">
+                                <li>
+                                    <button onClick={() => handleNavigation('inicio')} className="text-gray-400 hover:text-accent-400 transition-colors duration-300 text-sm">
+                                        Inicio
+                                    </button>
+                                </li>
+                                <li>
+                                    <button onClick={() => handleNavigation('portfolio')} className="text-gray-400 hover:text-accent-400 transition-colors duration-300 text-sm">
+                                        Portfolio
+                                    </button>
+                                </li>
+                                <li>
+                                    <button onClick={() => handleNavigation('skills')} className="text-gray-400 hover:text-accent-400 transition-colors duration-300 text-sm">
+                                        Skills
+                                    </button>
+                                </li>
+                                <li>
+                                    <button onClick={() => handleNavigation('contacto')} className="text-gray-400 hover:text-accent-400 transition-colors duration-300 text-sm">
+                                        Contacto
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        {/* Social & Contact */}
+                        <div className="space-y-4">
+                            <h4 className="text-lg font-semibold text-white">Redes Sociales</h4>
+                            <div className="flex space-x-4">
+                                {redesSociales.map(redSocial => (
+                                    <Link 
+                                        key={redSocial.id} 
+                                        to={redSocial.link} 
+                                        target='_blank'
+                                        className="w-10 h-10 bg-dark-800/50 hover:bg-accent-600 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300 hover:scale-110 border border-dark-600/50 hover:border-accent-500/50"
+                                    >
                                         {redSocial.icono}
                                     </Link>
-                                ))
-                            }
-                            <button onClick={copyToClipboard}>
-                                <BiSolidEnvelope />
-                            </button>
-                        </IconContext.Provider>
+                                ))}
+                                <button 
+                                    onClick={copyToClipboard}
+                                    className="w-10 h-10 bg-dark-800/50 hover:bg-accent-600 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300 hover:scale-110 border border-dark-600/50 hover:border-accent-500/50"
+                                >
+                                    <BiSolidEnvelope />
+                                </button>
+                            </div>
+                            
+                            <div className="pt-4">
+                                <p className="text-gray-400 text-sm">
+                                    Email: mauricioteruel98@gmail.com
+                                </p>
+                                <p className="text-gray-400 text-sm">
+                                    Ubicación: Tucumán, Argentina
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Bottom Bar */}
+                    <div className="border-t border-dark-700/50 mt-8 pt-8 text-center">
+                        <p className="text-gray-400 text-sm">
+                            © {new Date().getFullYear()} Mauricio Teruel. Casi todos los derechos reservados.
+                        </p>
+                        <p className="text-gray-500 text-xs mt-2">
+                            Desarrollado con ❤️ usando React y Tailwind CSS
+                        </p>
                     </div>
                 </div>
             </footer>
 
+            {/* Success Alert */}
             {showAlert && (
-                <div className="fixed top-20 right-5 lg:right-10 transition" style={{ zIndex: '9999' }}>
-                    <div role="alert" className="alert alert-success">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6"
-                            fill="none"
-                            viewBox="0 0 24 24"><path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                        <span>Dirección de E-mail copiado en portapapeles</span>
+                <div className="fixed top-20 right-5 lg:right-10 z-50 animate-fade-in">
+                    <div className="bg-green-600 text-white px-6 py-4 rounded-lg shadow-lg border border-green-500/50">
+                        <div className="flex items-center space-x-3">
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                            </svg>
+                            <span>Email copiado al portapapeles</span>
+                        </div>
                     </div>
                 </div>
             )}

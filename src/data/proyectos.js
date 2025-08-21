@@ -22,6 +22,23 @@ const proyectosPortfolio = [
     },
     {
         id: 2,
+        titulo: 'EventProCalendar',
+        bajada: 'Sitio web para la gestión de eventos',
+        contenido: 'Sitio web para la gestión de eventos, con un calendario interactivo para visualizar los eventos y un panel de control para la gestión de eventos, donde el usuario tambien puede cargar que items se requieren para cada evento.',
+        link: 'https://www.eventprocalendar.site',
+        tecnologias: [{php: true}, { react: true }, { node: true }, { mongo: false }, { tailwind: true }, { bootstrap: false }, { laravel: false }, { mysql: true }, { nextjs: false }, { javascript: false }, { supabase: false }],
+        imagen: [
+            'https://res.cloudinary.com/dhygcahmm/image/upload/v1755820426/projects/eventcalendar/91shots_so_nszjeh.png',
+            'https://res.cloudinary.com/dhygcahmm/image/upload/v1755820407/projects/eventcalendar/545shots_so_goxz4t.png',
+            'https://res.cloudinary.com/dhygcahmm/image/upload/v1755820407/projects/eventcalendar/996shots_so_nmh5il.png',
+            'https://res.cloudinary.com/dhygcahmm/image/upload/v1755820424/projects/eventcalendar/699shots_so_wy6kyx.png',
+            'https://res.cloudinary.com/dhygcahmm/image/upload/v1755820424/projects/eventcalendar/451shots_so_jonvaw.png',
+            'https://res.cloudinary.com/dhygcahmm/image/upload/v1755820430/projects/eventcalendar/772shots_so_cbd6m3.png',
+        ],
+        github: "https://github.com/MauricioTeruel98/calendario-eventos"
+    },
+    {
+        id: 3,
         titulo: 'TANO, Tu Administrador de Negocio Online',
         bajada: 'Sitio web para administrar negocios',
         contenido: 'Contiene un modo de suscripción de pago para que otro dueños de kioscos o negocios puedan acceder a este administrador. Estado actual: Modo suscripción pendiente de activación',
@@ -39,7 +56,7 @@ const proyectosPortfolio = [
         github: "https://github.com/MauricioTeruel98/my-admin-dashboard"
     },
     {
-        id: 3,
+        id: 4,
         titulo: 'App para administración de pedidos - React Native',
         bajada: 'Aplicación movil para administrar pedidos, realizar ventar y controlar los pedidos realizados para clientes. Utilizada por los repartidores de una panificación',
         contenido: '',
@@ -53,7 +70,7 @@ const proyectosPortfolio = [
         github: "https://github.com/MauricioTeruel98/app-pedidos"
     },
     {
-        id: 4,
+        id: 5,
         titulo: 'MkProps',
         bajada: 'Setio web de venta de propiedades',
         contenido: '',
@@ -66,7 +83,7 @@ const proyectosPortfolio = [
         github: ""
     },
     {
-        id: 5,
+        id: 6,
         titulo: 'Stellar Experience',
         bajada: 'Sitio web para proyecto de hackaton Nasa Space Apps Challenge',
         contenido: '',
@@ -80,7 +97,7 @@ const proyectosPortfolio = [
         github: "https://github.com/MauricioTeruel98/stellar-experience"
     },
     {
-        id: 6,
+        id: 7,
         titulo: 'OkFood',
         bajada: 'Proyecto final de curso Rolling Code School',
         contenido: '',
@@ -92,7 +109,7 @@ const proyectosPortfolio = [
         github: "https://github.com/ContiLuna/Proyecto_Final_be"
     },
     {
-        id: 7,
+        id: 8,
         titulo: 'Metro - En construcción',
         bajada: 'Sitio web para solicitar obras de carpinteria de aluminio y melamina',
         contenido: '',
@@ -106,7 +123,7 @@ const proyectosPortfolio = [
         github: ""
     },
     {
-        id: 8,
+        id: 9,
         titulo: 'Elevenflix',
         bajada: 'Sitio web del segundo proyecto del curso Rolling Code School',
         contenido: '',

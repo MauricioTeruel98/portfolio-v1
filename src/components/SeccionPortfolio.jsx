@@ -4,31 +4,32 @@ import PortfolioItem from './PortfolioItem'
 import { Link } from 'react-router-dom'
 
 const SeccionPortfolio = () => {
-
     return (
-        <>
-            <div className='mt-20'>
-                <div className="flex flex-col w-full border-opacity-50">
-                    <div className="divider">
-                        <h2 className='text-4xl'>PORTFOLIO</h2>
-                    </div>
-                </div>
+        <div className="space-y-16">
+            {/* Section Header */}
+            <div className="text-center space-y-4">
+                <h2 className="section-title">
+                    <span className="gradient-text">Portfolio</span> de Proyectos
+                </h2>
+                <p className="section-subtitle">
+                    Una selección de mis mejores trabajos y proyectos más destacados
+                </p>
             </div>
 
-            <div className='grid lg:grid-cols-2 2xl:grid-cols-3 gap-5 mt-20'>
-                {
-                    proyectosPortfolio.slice(0, 9).map(proyecto => (
-                        <PortfolioItem proyecto={proyecto} key={proyecto.id} />
-                    ))
-                }
+            {/* Projects Grid */}
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+                {proyectosPortfolio.slice(0, 9).map(proyecto => (
+                    <PortfolioItem proyecto={proyecto} key={proyecto.id} />
+                ))}
             </div>
 
-            {/* <div className='w-full flex justify-center mt-10'>
-                <Link to={'/'} className="btn btn-secondary rounded-full">
-                    Ver Todos
+            {/* View All Button */}
+            {/* <div className="text-center pt-8">
+                <Link to={'/'} className="btn-primary">
+                    Ver Todos los Proyectos
                 </Link>
             </div> */}
-        </>
+        </div>
     )
 }
 

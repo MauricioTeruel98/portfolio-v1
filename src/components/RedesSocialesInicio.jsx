@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import EnterLink from './elements/EnterLink'
 import redesSociales from '../data/redesSociales'
-import usePortfolio from '../hooks/usePortfolio'
 import { BiSolidEnvelope } from 'react-icons/bi'
 
 const RedesSocialesInicio = () => {
-
     const [showAlert, setShowAlert] = useState(false);
 
     const copyToClipboard = () => {
@@ -16,66 +13,75 @@ const RedesSocialesInicio = () => {
         textArea.select();
         document.execCommand('copy');
         document.body.removeChild(textArea);
-        setShowAlert(true); // Activar la alerta
+        setShowAlert(true);
     };
 
     useEffect(() => {
-        // Ocultar la alerta después de 3 segundos
         setTimeout(() => {
             setShowAlert(false);
-        }, 5000);
+        }, 3000);
     }, [showAlert]);
 
-    const { clasesParaAnimacion } = usePortfolio();
-
     return (
-        <>
-            {/* REDES SOCIALES */}
-            <div className='md:w-1/3 mt-10 md:mt-0'>
-                <div className='flex justify-center items-center'>
-                    <div className='flex flex-wrap justify-center md:grid xl:grid-cols-2 gap-5'>
-                        {
-                            redesSociales.map(redSocial => (
-                                <Link to={redSocial.link} key={redSocial.id} target='_blank'>
-                                    <div className={`rounded-3xl w-40 h-40 glassie ${clasesParaAnimacion} hover:bg-indigo-800`}>
-                                        <div className='relative'>
-                                            <EnterLink />
-                                            <div className='flex h-40 justify-center items-center'>
-                                                {redSocial.icono}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Link>
-                            ))
-                        }
-                        <button onClick={copyToClipboard}>
-                            <div className={`rounded-3xl w-40 h-40 glassie ${clasesParaAnimacion} hover:bg-indigo-800`}>
-                                <div className='relative'>
-                                    <EnterLink />
-                                    <div className='flex h-40 justify-center items-center'>
-                                        <BiSolidEnvelope />
-                                    </div>
-                                </div>
-                            </div>
-                        </button>
+        <div className="space-y-8 animate-slide-up">
+            {/* Profile Image */}
+            <div className="flex justify-center">
+                <div className="relative">
+                    <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden ring-4 ring-accent-500/30 shadow-2xl">
+                        <img 
+                            src="https://avatars.githubusercontent.com/u/92469898?v=4" 
+                            alt="Mauricio Teruel"
+                            className="w-full h-full object-cover"
+                        />
                     </div>
+                    
+                    {/* Floating accent ring */}
+                    <div className="absolute inset-0 rounded-full border-2 border-accent-400/20 animate-pulse"></div>
                 </div>
             </div>
+
+            {/* Social Links Grid - Reduced spacing */}
+            <div className="flex flex-wrap gap-3 justify-center max-w-sm mx-auto">
+                {redesSociales.map(redSocial => (
+                    <Link 
+                        key={redSocial.id} 
+                        to={redSocial.link} 
+                        target='_blank'
+                        className="group"
+                    >
+                        <div className="w-14 h-14 md:w-16 md:h-16 bg-dark-800/50 hover:bg-dark-700/70 border border-dark-600/50 hover:border-accent-500/50 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent-500/25">
+                            <div className="text-gray-400 group-hover:text-accent-400 transition-colors duration-300 text-lg md:text-xl">
+                                {redSocial.icono}
+                            </div>
+                        </div>
+                    </Link>
+                ))}
+                
+                {/* Email Button */}
+                <button 
+                    onClick={copyToClipboard}
+                    className="w-14 h-14 md:w-16 md:h-16 bg-dark-800/50 hover:bg-dark-700/70 border border-dark-600/50 hover:border-accent-500/50 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-accent-500/25"
+                >
+                    <div className="text-gray-400 hover:text-accent-400 transition-colors duration-300 text-lg md:text-xl">
+                        <BiSolidEnvelope />
+                    </div>
+                </button>
+            </div>
+
+            {/* Success Alert */}
             {showAlert && (
-                <div className="fixed top-20 right-5 lg:right-10 transition" style={{ zIndex: '9999' }}>
-                    <div role="alert" className="alert alert-success">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6"
-                            fill="none"
-                            viewBox="0 0 24 24"><path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                        <span>Dirección de E-mail copiado en portapapeles</span>
+                <div className="fixed top-20 right-5 lg:right-10 z-50 animate-fade-in">
+                    <div className="bg-green-600 text-white px-6 py-4 rounded-lg shadow-lg border border-green-500/50">
+                        <div className="flex items-center space-x-3">
+                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                            </svg>
+                            <span>Email copiado al portapapeles</span>
+                        </div>
                     </div>
                 </div>
             )}
-        </>
+        </div>
     )
 }
 

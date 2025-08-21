@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import PortfolioContext from '../context/PortfolioProvider'
 
 const usePortfolio = () => {
@@ -7,6 +8,8 @@ const usePortfolio = () => {
 
 export const useSmoothScroll = () => {
     const [showScrollTop, setShowScrollTop] = useState(false)
+    const location = useLocation()
+    const navigate = useNavigate()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -19,12 +22,18 @@ export const useSmoothScroll = () => {
     }, [])
 
     const scrollToSection = (sectionId) => {
-        const element = document.getElementById(sectionId)
-        if (element) {
-            element.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            })
+        // Si estamos en la página de inicio, hacer scroll a la sección
+        if (location.pathname === '/') {
+            const element = document.getElementById(sectionId)
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                })
+            }
+        } else {
+            // Si estamos en otra página, redirigir a inicio con el hash
+            navigate(`/#${sectionId}`)
         }
     }
 
