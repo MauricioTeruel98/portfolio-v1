@@ -7,6 +7,7 @@ const blogPosts = [
         bajada: "El NASA International Space Apps Challenge es un hackathon para programadores, científicos, diseñadores, narradores, creadores, tecnólogos e innovadores de todo el mundo que se reúnen y utilizan datos abiertos de la NASA y sus agencias espaciales asociadas para crear soluciones a los retos a los que nos enfrentamos en la Tierra y en el espacio.",
         contenido: "En 2023 este evento se llevó a cabo en la ciudad de Mendoza organizado por The Mars Society Argentina, y tuvo una duración de 2 días, en donde trabajamos en conjunto para crear un proyecto innovador e inspirador.",
         imagenes: [
+            "https://res.cloudinary.com/dhygcahmm/image/upload/v1755821751/Captura_de_pantalla_2025-08-21_211427_hvoni5.png",
             "https://images-assets.nasa.gov/image/PIA14417/PIA14417~medium.jpg",
             "https://images-assets.nasa.gov/image/PIA04216/PIA04216~small.jpg"
         ],
