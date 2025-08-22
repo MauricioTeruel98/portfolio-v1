@@ -43,10 +43,10 @@ const PersonalInfo = () => {
                     <div className="text-2xl font-bold text-accent-400">50+</div>
                     <div className="text-sm text-gray-400">Proyectos completados</div>
                 </div>
-                <div className="text-center">
+                {/* <div className="text-center">
                     <div className="text-2xl font-bold text-accent-400">100%</div>
                     <div className="text-sm text-gray-400">Satisfacción del cliente</div>
-                </div>
+                </div> */}
             </div>
         </div>
     )
