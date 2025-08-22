@@ -2,6 +2,7 @@ import { BiHome, BiSolidContact } from 'react-icons/bi'
 import { PiBagSimpleDuotone } from 'react-icons/pi'
 import { FaTools } from 'react-icons/fa'
 import { TbNotes } from 'react-icons/tb'
+import { FiGithub } from 'react-icons/fi'
 import uuid from 'react-uuid';
 
 const menuItems = [
@@ -22,6 +23,12 @@ const menuItems = [
         nombre: "Portfolio",
         icono: <PiBagSimpleDuotone />,
         link: "/#portfolio"
+    },
+    {
+        id: uuid(),
+        nombre: "GitHub",
+        icono: <FiGithub />,
+        link: "/#github"
     },
     {
         id: uuid(),

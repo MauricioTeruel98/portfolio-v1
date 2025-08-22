@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 import RedesSocialesInicio from '../components/RedesSocialesInicio'
 import PersonalInfo from '../components/PersonalInfo'
 import SeccionPortfolio from '../components/SeccionPortfolio'
+import SeccionGitHub from '../components/SeccionGitHub'
 import Skills from '../components/Skills'
 import HomeBlog from '../components/HomeBlog'
 import Contacto from '../components/Contacto'
@@ -59,6 +60,13 @@ const Inicio = () => {
             <section id="portfolio" className="py-20 px-6 scroll-mt-20">
                 <div className="max-w-7xl mx-auto">
                     <SeccionPortfolio />
+                </div>
+            </section>
+
+            {/* GitHub Section */}
+            <section id="github" className="py-20 px-6 scroll-mt-20">
+                <div className="max-w-7xl mx-auto">
+                    <SeccionGitHub />
                 </div>
             </section>
 
