@@ -1,6 +1,6 @@
 import { BiLogoReact, BiLogoJavascript } from 'react-icons/bi'
 import { FaLaravel, FaNodeJs, FaBootstrap } from 'react-icons/fa'
-import { SiMysql, SiMongodb, SiTailwindcss, SiWordpress, SiPhp, SiSupabase } from 'react-icons/si'
+import { SiMysql, SiMongodb, SiTailwindcss, SiWordpress, SiPhp, SiSupabase, SiTypescript } from 'react-icons/si'
 import { TbBrandNextjs } from 'react-icons/tb'
 import uuid from 'react-uuid';
 
@@ -63,8 +63,8 @@ const skills = [
     {
         id: uuid(),
         nombre: "",
-        icono: <SiSupabase />
-    }
+        icono: <SiTypescript />
+    },
 
 ]
 
