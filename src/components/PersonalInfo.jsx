@@ -16,8 +16,8 @@ const PersonalInfo = () => {
 
             {/* Description */}
             <div className="space-y-6">
-                <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-2xl">
-                    {personalInfo.informacion}
+                <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-2xl"
+                   dangerouslySetInnerHTML={{ __html: personalInfo.informacion }}>
                 </p>
 
                 {/* CTA Buttons */}
