@@ -1,26 +1,69 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { FiSend, FiUser, FiPhone, FiMail, FiMessageSquare } from 'react-icons/fi'
+import { FiSend, FiUser, FiPhone, FiMail, FiMessageSquare, FiType } from 'react-icons/fi'
+import { sendContactEmail } from '../config/api'
 
 const Contacto = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [showSuccess, setShowSuccess] = useState(false);
+    const [showError, setShowError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const onSubmit = async (data) => {
         setIsSubmitting(true);
+        setShowError(false);
+        setErrorMessage('');
         
-        // Simulate form submission
-        setTimeout(() => {
-            setIsSubmitting(false);
-            setShowSuccess(true);
-            reset();
+        try {
+            const contactData = {
+                name: data.name,
+                email: data.email,
+                subject: data.subject,
+                message: data.message
+            };
+
+            const result = await sendContactEmail(contactData);
+
+            if (result.success) {
+                setShowSuccess(true);
+                reset();
+                
+                setTimeout(() => {
+                    setShowSuccess(false);
+                }, 5000);
+            } else {
+                setErrorMessage(result.message || 'Error desconocido');
+                setShowError(true);
+                
+                setTimeout(() => {
+                    setShowError(false);
+                }, 8000);
+            }
+        } catch (error) {
+            console.error('Error al enviar mensaje:', error);
+            
+            // Mensaje de error más específico según el tipo
+            let message = 'Error inesperado al enviar el mensaje.';
+            
+            if (error.message.includes('fetch')) {
+                message = 'Error de conexión. Verifica tu conexión a internet e inténtalo de nuevo.';
+            } else if (error.message.includes('CORS')) {
+                message = 'Error de configuración del servidor. Contacta al administrador.';
+            } else if (error.message) {
+                message = error.message;
+            }
+            
+            setErrorMessage(message);
+            setShowError(true);
             
             setTimeout(() => {
-                setShowSuccess(false);
-            }, 3000);
-        }, 2000);
+                setShowError(false);
+            }, 8000);
+        } finally {
+            setIsSubmitting(false);
+        }
     }
 
     return (
@@ -96,9 +139,12 @@ const Contacto = () => {
                                         <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                                         <input
                                             type="text"
-                                            {...register('name', { required: 'El nombre es requerido' })}
+                                            {...register('name', { 
+                                                required: 'El nombre es requerido',
+                                                maxLength: { value: 100, message: 'El nombre no puede tener más de 100 caracteres' }
+                                            })}
                                             className="w-full pl-10 pr-4 py-3 bg-dark-800/50 border border-dark-600/50 rounded-lg text-white placeholder-gray-400 focus:border-accent-500 focus:ring-2 focus:ring-accent-500/20 transition-all duration-300"
-                                            placeholder="Tu nombre"
+                                            placeholder="Tu nombre completo"
                                         />
                                     </div>
                                     {errors.name && (
@@ -132,6 +178,7 @@ const Contacto = () => {
                                         type="email"
                                         {...register('email', { 
                                             required: 'El email es requerido',
+                                            maxLength: { value: 255, message: 'El email no puede tener más de 255 caracteres' },
                                             pattern: {
                                                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                                                 message: 'Email inválido'
@@ -148,15 +195,39 @@ const Contacto = () => {
 
                             <div className="space-y-2">
                                 <label className="text-sm font-medium text-gray-300">
+                                    Asunto
+                                </label>
+                                <div className="relative">
+                                    <FiType className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                                    <input
+                                        type="text"
+                                        {...register('subject', { 
+                                            required: 'El asunto es requerido',
+                                            maxLength: { value: 200, message: 'El asunto no puede tener más de 200 caracteres' }
+                                        })}
+                                        className="w-full pl-10 pr-4 py-3 bg-dark-800/50 border border-dark-600/50 rounded-lg text-white placeholder-gray-400 focus:border-accent-500 focus:ring-2 focus:ring-accent-500/20 transition-all duration-300"
+                                        placeholder="¿De qué quieres hablar?"
+                                    />
+                                </div>
+                                {errors.subject && (
+                                    <p className="text-red-400 text-sm">{errors.subject.message}</p>
+                                )}
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium text-gray-300">
                                     Mensaje
                                 </label>
                                 <div className="relative">
                                     <FiMessageSquare className="absolute left-3 top-3 text-gray-400 w-5 h-5" />
                                     <textarea
-                                        {...register('message', { required: 'El mensaje es requerido' })}
+                                        {...register('message', { 
+                                            required: 'El mensaje es requerido',
+                                            maxLength: { value: 2000, message: 'El mensaje no puede tener más de 2000 caracteres' }
+                                        })}
                                         rows="5"
                                         className="w-full pl-10 pr-4 py-3 bg-dark-800/50 border border-dark-600/50 rounded-lg text-white placeholder-gray-400 focus:border-accent-500 focus:ring-2 focus:ring-accent-500/20 transition-all duration-300 resize-none"
-                                        placeholder="Cuéntame sobre tu proyecto..."
+                                        placeholder="Cuéntame sobre tu proyecto, qué necesitas, plazos, presupuesto..."
                                     />
                                 </div>
                                 {errors.message && (
@@ -194,7 +265,24 @@ const Contacto = () => {
                             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                             </svg>
-                            <span>¡Mensaje enviado exitosamente!</span>
+                            <span>¡Mensaje enviado exitosamente! Te contactaré pronto.</span>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Error Message */}
+            {showError && (
+                <div className="fixed top-20 right-5 lg:right-10 z-50 animate-fade-in">
+                    <div className="bg-red-600 text-white px-6 py-4 rounded-lg shadow-lg border border-red-500/50 max-w-md">
+                        <div className="flex items-start space-x-3">
+                            <svg className="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                            </svg>
+                            <div>
+                                <div className="font-semibold">Error al enviar mensaje</div>
+                                <div className="text-sm text-red-100 mt-1">{errorMessage}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
