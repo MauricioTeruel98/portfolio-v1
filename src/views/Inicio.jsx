@@ -9,6 +9,7 @@ import HomeBlog from '../components/HomeBlog'
 import Contacto from '../components/Contacto'
 import Footer from '../components/Footer'
 import SeccionExp from '../components/SeccionExp'
+import SeccionCertificados from '../components/SeccionCertificados'
 
 const Inicio = () => {
     const location = useLocation()
@@ -67,6 +68,13 @@ const Inicio = () => {
             <section id="github" className="py-20 px-6 scroll-mt-20">
                 <div className="max-w-7xl mx-auto">
                     <SeccionGitHub />
+                </div>
+            </section>
+
+            {/* Certificates Section */}
+            <section id="certificados" className="py-20 px-6 scroll-mt-20">
+                <div className="max-w-7xl mx-auto">
+                    <SeccionCertificados />
                 </div>
             </section>
 

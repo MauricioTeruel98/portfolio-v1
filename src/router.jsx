@@ -3,6 +3,7 @@ import Layout from './layouts/Layout'
 import Inicio from './views/Inicio';
 import DetalleProyecto from './views/DetalleProyecto';
 import DetalleBlogPost from './views/DetalleBlogPost';
+import Certificados from './views/Certificados';
 
 const router = createBrowserRouter([
     {
@@ -32,6 +33,16 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <DetalleBlogPost/>,
+            }
+        ]
+    },
+    {
+        path: '/certificados',
+        element: <Layout />,
+        children: [
+            {
+                index: true,
+                element: <Certificados/>,
             }
         ]
     }
