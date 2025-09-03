@@ -9,10 +9,10 @@ const SeccionGitHub = ({ username = GITHUB_CONFIG.USERNAME }) => {
       {/* Section Header */}
       <div className="text-center space-y-4">
         <h2 className="section-title">
-          <span className="gradient-text">GitHub</span> & Repositorios
+          <span className="gradient-text">GitHub</span>
         </h2>
         <p className="section-subtitle">
-          Mi actividad en GitHub y una selección de mis repositorios más destacados
+          Mi actividad en GitHub
         </p>
       </div>
 
@@ -22,7 +22,7 @@ const SeccionGitHub = ({ username = GITHUB_CONFIG.USERNAME }) => {
       </div>
 
       {/* GitHub Repositories */}
-      <div>
+      {/* <div>
         <div className="text-center mb-12">
           <h3 className="text-2xl font-bold text-white mb-4">
             Repositorios Destacados
@@ -32,7 +32,7 @@ const SeccionGitHub = ({ username = GITHUB_CONFIG.USERNAME }) => {
           </p>
         </div>
         <GitHubRepos username={username} maxRepos={6} />
-      </div>
+      </div> */}
     </div>
   );
 };

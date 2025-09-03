@@ -23,7 +23,7 @@ const PersonalInfo = () => {
                 {/* CTA Buttons */}
                 <div className="flex flex-wrap gap-4 pt-4">
                     <a href="#portfolio" className="btn-primary">
-                        Ver Portfolio
+                        Ver Proyectos
                     </a>
                     <a href={resume}
                         target="_blank"

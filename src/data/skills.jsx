@@ -7,62 +7,62 @@ import uuid from 'react-uuid';
 const skills = [
     {
         id: uuid(),
-        nombre: "",
+        nombre: "React",
         icono: <BiLogoReact />
     },
     {
         id: uuid(),
-        nombre: "",
+        nombre: "JavaScript",
         icono: <BiLogoJavascript />
     },
     {
         id: uuid(),
-        nombre: "",
+        nombre: "Laravel",
         icono: <FaLaravel />
     },
     {
         id: uuid(),
-        nombre: "",
+        nombre: "Node.js",
         icono: <FaNodeJs />
     },
     {
         id: uuid(),
-        nombre: "",
+        nombre: "MySQL",
         icono: <SiMysql />
     },
     {
         id: uuid(),
-        nombre: "",
+        nombre: "MongoDB",
         icono: <SiMongodb />
     },
     {
         id: uuid(),
-        nombre: "",
+        nombre: "TailwindCSS",
         icono: <SiTailwindcss />
     },
     {
         id: uuid(),
-        nombre: "",
+        nombre: "Bootstrap",
         icono: <FaBootstrap />
     },
     {
         id: uuid(),
-        nombre: "",
+        nombre: "Next.js",
         icono: <TbBrandNextjs />
     },
     {
         id: uuid(),
-        nombre: "",
+        nombre: "Wordpress",
         icono: <SiWordpress />
     },
     {
         id: uuid(),
-        nombre: "",
+        nombre: "PHP",
         icono: <SiPhp />
     },
     {
         id: uuid(),
-        nombre: "",
+        nombre: "TypeScript",
         icono: <SiTypescript />
     },
 
