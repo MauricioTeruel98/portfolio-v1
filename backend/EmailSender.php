@@ -28,17 +28,13 @@ class EmailSender {
             $errors[] = 'El email no puede tener más de ' . MAX_EMAIL_LENGTH . ' caracteres';
         }
         
-        // Validar asunto
-        if (empty($data['subject'])) {
-            $errors[] = 'El asunto es requerido';
-        } elseif (strlen($data['subject']) > MAX_SUBJECT_LENGTH) {
+        // Validar asunto (opcional)
+        if (!empty($data['subject']) && strlen($data['subject']) > MAX_SUBJECT_LENGTH) {
             $errors[] = 'El asunto no puede tener más de ' . MAX_SUBJECT_LENGTH . ' caracteres';
         }
         
-        // Validar mensaje
-        if (empty($data['message'])) {
-            $errors[] = 'El mensaje es requerido';
-        } elseif (strlen($data['message']) > MAX_MESSAGE_LENGTH) {
+        // Validar mensaje (opcional)
+        if (!empty($data['message']) && strlen($data['message']) > MAX_MESSAGE_LENGTH) {
             $errors[] = 'El mensaje no puede tener más de ' . MAX_MESSAGE_LENGTH . ' caracteres';
         }
         
@@ -58,8 +54,8 @@ class EmailSender {
         return [
             'name' => htmlspecialchars(trim($data['name']), ENT_QUOTES, 'UTF-8'),
             'email' => filter_var(trim($data['email']), FILTER_SANITIZE_EMAIL),
-            'subject' => htmlspecialchars(trim($data['subject']), ENT_QUOTES, 'UTF-8'),
-            'message' => htmlspecialchars(trim($data['message']), ENT_QUOTES, 'UTF-8')
+            'subject' => isset($data['subject']) ? htmlspecialchars(trim($data['subject']), ENT_QUOTES, 'UTF-8') : 'Contacto desde portfolio',
+            'message' => isset($data['message']) ? htmlspecialchars(trim($data['message']), ENT_QUOTES, 'UTF-8') : 'Sin mensaje específico.'
         ];
     }
     

@@ -202,11 +202,10 @@ const Contacto = () => {
                                     <input
                                         type="text"
                                         {...register('subject', { 
-                                            required: 'El asunto es requerido',
                                             maxLength: { value: 200, message: 'El asunto no puede tener más de 200 caracteres' }
                                         })}
                                         className="w-full pl-10 pr-4 py-3 bg-dark-800/50 border border-dark-600/50 rounded-lg text-white placeholder-gray-400 focus:border-accent-500 focus:ring-2 focus:ring-accent-500/20 transition-all duration-300"
-                                        placeholder="¿De qué quieres hablar?"
+                                        placeholder="¿De qué quieres hablar? (opcional)"
                                     />
                                 </div>
                                 {errors.subject && (
@@ -222,12 +221,11 @@ const Contacto = () => {
                                     <FiMessageSquare className="absolute left-3 top-3 text-gray-400 w-5 h-5" />
                                     <textarea
                                         {...register('message', { 
-                                            required: 'El mensaje es requerido',
                                             maxLength: { value: 2000, message: 'El mensaje no puede tener más de 2000 caracteres' }
                                         })}
                                         rows="5"
                                         className="w-full pl-10 pr-4 py-3 bg-dark-800/50 border border-dark-600/50 rounded-lg text-white placeholder-gray-400 focus:border-accent-500 focus:ring-2 focus:ring-accent-500/20 transition-all duration-300 resize-none"
-                                        placeholder="Cuéntame sobre tu proyecto, qué necesitas, plazos, presupuesto..."
+                                        placeholder="Cuéntame sobre tu proyecto, qué necesitas, plazos, presupuesto... (opcional)"
                                     />
                                 </div>
                                 {errors.message && (
