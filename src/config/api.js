@@ -5,7 +5,7 @@
 const LOCAL_API_URL = 'http://localhost/api-portfolio';
 
 // Para producción (tu dominio de Hostinger)
-const PRODUCTION_API_URL = 'https://zynodestudio.com/backend/api-portfolio/send-email'; // 🔸 CAMBIAR POR TU URL REAL
+const PRODUCTION_API_URL = 'https://zynodestudio.com/backend/api-portfolio'; // 🔸 URL CORREGIDA - Sin /send-email
 
 // Detectar automáticamente el entorno
 const isDevelopment = window.location.hostname === 'localhost' || 
